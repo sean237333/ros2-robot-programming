@@ -1,0 +1,35 @@
+# =============================================================================
+# temp_converter_client 파라미터 설정 파일
+# =============================================================================
+# 사용법:
+#   ros2 run temp_converter temp_converter_client \
+#       --ros-args --params-file path/to/client_params.yaml
+# =============================================================================
+
+temp_converter_client:
+  ros__parameters:
+
+    # 서비스 요청 주기 (초)
+    # 이 주기마다 타이머가 발동하여 서버에 변환 요청을 보냅니다.
+    # 변경 시 타이머가 자동으로 재생성됩니다.
+    request_period: 2.0
+
+    # 랜덤 생성 온도의 최솟값 (°C 또는 °F)
+    # input_temp_min < input_temp_max 조건을 반드시 만족해야 합니다.
+    input_temp_min: -20.0
+
+    # 랜덤 생성 온도의 최댓값 (°C 또는 °F)
+    # input_temp_min < input_temp_max 조건을 반드시 만족해야 합니다.
+    input_temp_max: 100.0
+
+    # 서버에 전달할 온도 단위
+    # "C" : 섭씨 → 화씨로 변환 요청
+    # "F" : 화씨 → 섭씨로 변환 요청
+    target_unit: "C"
+
+# 파라미터 1개
+#ros2 run temp_converter temp_converter_server --ros-args -p decimal_places:=4
+# 파라미터 여러 개 (-p 반복)
+#ros2 run temp_converter temp_converter_client --ros-args -p request_period:=1.0 -p target_unit:=F -p input_temp_min:=0.0
+# YAML 파일로
+#ros2 run temp_converter temp_converter_server --ros-args --params-file ~/robot_ws/install/temp_converter/share/temp_converter/config/server_params.yaml

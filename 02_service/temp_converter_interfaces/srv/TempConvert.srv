@@ -1,0 +1,7 @@
+float64 temperature   # 입력 온도 값
+string unit           # 입력 단위: "C" (섭씨) 또는 "F" (화씨)
+---
+float64 converted     # 변환된 온도 값
+string result_unit    # 결과 단위
+bool success          # 변환 성공 여부
+string message        # 결과 메시지 (오류 시 원인)
